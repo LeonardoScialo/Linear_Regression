@@ -1,5 +1,5 @@
 # Linear Regression From Scratch
-* A Linear Regression model developed in python from scratch - the algorithm itself is built solely with numpy and built-in Python modules;
+* A Linear Regression model developed in python from scratch on a salary dataset - the algorithm itself is built solely with numpy and built-in Python modules;
 * Developed in vector notation utilising numpy for a more efficient computational analysis;
 * Includes a function to normalise the data (default only normalises the x-data);
 * Outputs a graph of the cost vs the number of iterations, along with the number of iterations it took to converge;
