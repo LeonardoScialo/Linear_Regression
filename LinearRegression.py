@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+import inspect
 
 
 def Cost_Function_J(m, y_true, y_predicted):
@@ -95,7 +96,10 @@ if __name__ == "__main__":
     y_data = df.iloc[:, -1:].values
 
     # normalising the data
+    normalise_y = False
     X_data, X_max_min = normalisation(X_data)
+    if normalise_y:
+        y_data, y_max_min = normalisation(y_data)
 
     # splitting the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=1/3, random_state=0)
@@ -123,12 +127,12 @@ if __name__ == "__main__":
     y_vals = np.dot(x_vals, w) + b
 
     plt.figure(2, figsize=(8, 6))
-    plt.scatter(X_train, y_train, color='red', marker='x', s=10)
-    plt.scatter(X_test, y_test, color='blue', marker='x', s=10)
+    plt.scatter(X_train, y_train, color='red', marker='o', s=10)
+    plt.scatter(X_test, y_test, color='blue', marker='o', s=10)
     plt.plot(x_vals, y_vals, color='k')
     plt.title("Linear Regression")
     plt.xlabel("x data")
     plt.ylabel("y data")
-    plt.legend(["linear regression", "training data", "test data"])
+    plt.legend(["y = {:0.2f}x + {:0.2f}".format(np.sum(w), b), "training data", "test data"])
 
     plt.show()
